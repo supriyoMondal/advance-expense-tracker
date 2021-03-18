@@ -8,26 +8,24 @@ const App = () => {
   const classes = useStyles();
 
   return (
-    <div>
-      <Grid
-        container
-        spacing={0}
-        alignItems='center'
-        justify='center'
-        style={{ height: '100vh' }}
-        className={classes.grid}
-      >
-        <Grid item xs={12} sm={4}>
-          <Details title='Income' />
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Main />
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <Details title='Expense' />
-        </Grid>
+    <Grid
+      container
+      spacing={0}
+      alignItems='center'
+      justify='center'
+      style={{ height: '100vh' }}
+      className={classes.grid}
+    >
+      <Grid item xs={12} sm={4}>
+        <Details title='Income' />
       </Grid>
-    </div>
+      <Grid item xs={12} sm={3}>
+        <Main />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Details title='Expense' />
+      </Grid>
+    </Grid>
   );
 };
 

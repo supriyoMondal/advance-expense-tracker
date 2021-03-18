@@ -7,6 +7,8 @@ import {
   Grid,
 } from '@material-ui/core';
 import React from 'react';
+import Form from './Form/Form';
+import List from './List/List';
 import useStyles from './styles';
 
 const Main = () => {
@@ -27,12 +29,12 @@ const Main = () => {
           Try saying add income for 1000 salary
         </Typography>
         <Divider />
-        {/* Form */}
+        <Form />
       </CardContent>
       <CardContent className={classes.cartContent}>
         <Grid container spacing={20}>
-          <Grid item sx={12}>
-            {/* List */}
+          <Grid item xs={12}>
+            <List />
           </Grid>
         </Grid>
       </CardContent>
