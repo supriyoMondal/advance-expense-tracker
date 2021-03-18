@@ -59,7 +59,7 @@ const List = () => {
               <IconButton
                 edge='end'
                 aria-label='delete'
-                onClick={() => console.log(transaction.id)}
+                onClick={() => deleteTransaction(transaction.id)}
               >
                 <Delete />
               </IconButton>
