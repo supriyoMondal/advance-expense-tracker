@@ -13,12 +13,17 @@ import { v4 as uuidV4 } from 'uuid';
 import useStyles from './styles';
 import { ExpenseTrackerContext } from '../../../context/context';
 import { toast } from 'react-toastify';
+import {
+  incomeCategories,
+  expenseCategories,
+} from '../../../constants/categories';
+import { formatDate } from '../../../utils/formatDate';
 
 const initialState = {
   amount: '',
   category: 'Anonymous',
   type: 'Income',
-  date: new Date(),
+  date: formatDate(new Date()),
 };
 
 const Form = () => {
@@ -36,7 +41,8 @@ const Form = () => {
     addTransaction(transaction);
     setFormData(initialState);
   };
-
+  const selectedCategories =
+    type === 'Income' ? incomeCategories : expenseCategories;
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -67,8 +73,11 @@ const Form = () => {
             }
           >
             <MenuItem value='Anonymous'>Anonymous</MenuItem>
-            <MenuItem value='Business'>Business</MenuItem>
-            <MenuItem value='Salary'>Salary</MenuItem>
+            {selectedCategories.map((item) => (
+              <MenuItem value={item.type} key={item.type}>
+                {item.type}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
@@ -88,7 +97,9 @@ const Form = () => {
           fullWidth
           label='Date'
           value={date}
-          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, date: formatDate(e.target.value) })
+          }
         />
       </Grid>
       <Button
